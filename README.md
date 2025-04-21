@@ -1,15 +1,38 @@
 # Mobile
 
-## How to run
+## Jak spustit
 
-Using Docker:
+Pomocí dockeru:
 ```bash
 docker compose up --build
 ```
 
-Or run the project locally:
-```bash
-cd src
-npm install
-npx expo start
-```
+## React
+
+## React Native
+
+## Expo
+
+## JSX
+
+## Komponenty
+
+### Properties
+
+### States
+
+## Uživatelský vstup
+
+### Text input
+
+### Button
+
+### ScrollView
+
+## Seznamy
+
+## Stylování
+
+## Expo Router
+
+## Expo Go
