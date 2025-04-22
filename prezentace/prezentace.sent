@@ -1,0 +1,41 @@
+React Native
+
+React:
+  knihovna pro tvorbu webových
+  uživatelských rozhraní
+
+Problém s Reactem:
+  nikdo nepoužívá webovky :(
+
+Naivní řešení: WebView
+
+@facebook.png
+
+Problémy s WebView:
+  - nativní APIs
+  - optimalizace
+  - konzistence
+  - a další...
+
+@diffs.png
+
+React Native:
+  je to React, ale nativní :)
+
+Problém s React Native:
+  pořád je to jen knihovna
+
+Expo:
+  framework pro vývoj aplikací
+
+Výhody Expa:
+  - jednodušší setup
+  - hot reload
+  - managed workflow
+  - SDK a Expo Go
+
+Následuje praktický úvod do React Native...
+
+https://github.com/marty-thane/gui
+
+@expo.jpeg
