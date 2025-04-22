@@ -100,6 +100,7 @@ Napište komponentu, která bude tvořena [textovým polem](https://reactnative.
 
 <details>
 <summary>Zobrazit řešení</summary>
+
 ```tsx
 import { useState } from 'react';
 import { Text, TextInput, TouchableOpacity } from 'react-native';
@@ -129,6 +130,7 @@ const Greeting = () => {
   );
 };
 ```
+
 </details>
 
 <!-- jeste nejake komponenty, asi scrollview  -->
