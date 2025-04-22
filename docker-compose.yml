@@ -8,3 +8,5 @@ services:
     volumes:
       - ./src:/usr/src/mobile
       - /usr/src/mobile/node_modules # Protect this folder from being overwritten by mount
+    stdin_open: true
+    tty: true
