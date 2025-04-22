@@ -7,32 +7,12 @@ Pomocí dockeru:
 docker compose up --build
 ```
 
-## React
+## Úvod
 
-## React Native
-
-## Expo
-
-## JSX
+## Expo Go
 
 ## Komponenty
 
-### Properties
-
-### States
-
-## Uživatelský vstup
-
-### Text input
-
-### Button
-
-### ScrollView
-
-## Seznamy
-
-## Stylování
+## Styly
 
 ## Expo Router
-
-## Expo Go
