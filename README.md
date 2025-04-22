@@ -28,10 +28,10 @@ Můžeme definovat vlastní komponenty:
 ```tsx
 import { Text, TouchableOpacity } from 'react-native';
 
-const MyButton = ({ label }) => {
+const MyButton = () => {
   return (
     <TouchableOpacity>
-      <Text>{label}</Text>
+      <Text>Já jsem tlačítko.</Text>
     </TouchableOpacity>
   );
 };
@@ -40,12 +40,12 @@ const MyButton = ({ label }) => {
 Tyto komponenty potom lze použít v kódu:
 
 ```tsx
-<MyButton label="Ahoj světe" />
+<MyButton/>
 ```
 
 ### Argumenty
 
-Všimněme si, že naše komponenta přijímá argumenty (*props*). Ty můžeme rozšířit:
+Naše komponenta může přijímat argumenty (*props*):
 
 ```tsx
 import { Text, TouchableOpacity, Linking } from 'react-native';
@@ -73,7 +73,7 @@ Komponenty mohou mít stavy (*states*), které slouží jako jejich interní pam
 import { useState } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const MyButton = ({ label }) => {
+const MyButton = () => {
   const [clickCount, setClickCount] = useState(0);
 
   const handlePress = () => {
