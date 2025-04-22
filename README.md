@@ -88,12 +88,6 @@ const MyButton = () => {
 };
 ```
 
-### Efekty
-
-Efekty používáme pro synchronizaci se systémy mimo React.
-
-<!-- tady ukazka kodu, asi aktualizace document title -->
-
 ### Úkol č. 1
 
 Napište komponentu, která bude tvořena [textovým polem](https://reactnative.dev/docs/textinput) a tlačítkem. Po zadání vašeho jména a kliknutí na tlačítko vás komponenta pozdraví.
@@ -132,8 +126,6 @@ const Greeting = () => {
 ```
 
 </details>
-
-<!-- jeste nejake komponenty, asi scrollview  -->
 
 ## Styly
 
