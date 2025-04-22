@@ -29,11 +29,11 @@ Můžeme definovat vlastní komponenty:
 import { Text, TouchableOpacity } from 'react-native';
 
 const MyButton = ({ label }) => {
-    return (
-        <TouchableOpacity>
-          <Text>{label}</Text>
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity>
+      <Text>{label}</Text>
+    </TouchableOpacity>
+  );
 };
 ```
 
@@ -51,11 +51,11 @@ Všimněme si, že naše komponenta přijímá argumenty (*props*). Ty můžeme 
 import { Text, TouchableOpacity, Linking } from 'react-native';
 
 const MyButton = ({ label, link }) => {
-    return (
-        <TouchableOpacity onPress={() => Linking.openURL(link)}>
-          <Text>{label}</Text>
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity onPress={() => Linking.openURL(link)}>
+      <Text>{label}</Text>
+    </TouchableOpacity>
+  );
 };
 ```
 
@@ -74,23 +74,64 @@ import { useState } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 const MyButton = ({ label }) => {
-    const [clickCount, setClickCount] = useState(0);
+  const [clickCount, setClickCount] = useState(0);
 
-    const handlePress = () => {
-        setClickCount(clickCount => clickCount + 1);
-    };
+  const handlePress = () => {
+    setClickCount(prevClick => prevClick + 1);
+  };
 
-    return (
-        <TouchableOpacity onPress={handlePress}>
-          <Text>Kliknul jsi mě {label}x.</Text>
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity onPress={handlePress}>
+      <Text>Kliknul jsi mě {clickCount}x.</Text>
+    </TouchableOpacity>
+  );
 };
 ```
 
 ### Efekty
 
 Efekty používáme pro synchronizaci se systémy mimo React.
+
+<!-- tady ukazka kodu, asi aktualizace document title -->
+
+### Úkol č. 1
+
+Napište komponentu, která bude tvořena [textovým polem](https://reactnative.dev/docs/textinput) a tlačítkem. Po zadání vašeho jména a kliknutí na tlačítko vás komponenta pozdraví.
+
+<details>
+<summary>Zobrazit řešení</summary>
+```tsx
+import { useState } from 'react';
+import { Text, TextInput, TouchableOpacity } from 'react-native';
+
+const Greeting = () => {
+  const [name, setName] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
+
+  const handlePress = () => {
+    setSubmittedName(name);
+  };
+
+  return (
+    <>
+      <TextInput
+        placeholder="Jak se jmenuješ?"
+        value={name}
+        onChangeText={setName}
+      />
+      <TouchableOpacity onPress={handlePress}>
+        <Text>Potvrdit</Text>
+      </TouchableOpacity>
+      {submittedName !== '' && (
+        <Text>Ahoj, {submittedName}!</Text>
+      )}
+    </>
+  );
+};
+```
+</details>
+
+<!-- jeste nejake komponenty, asi scrollview  -->
 
 ## Styly
 
