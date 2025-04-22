@@ -21,7 +21,7 @@ Následující dokument slouží jako opora pro výuku v předmětu KI/GUI.
 
 O komponentách můžeme přemýšlet jako o funkcích.
 
-<!-- zde asi tabulka základních komponent -->
+Přehled komponent naleznete [zde](https://reactnative.dev/docs/components-and-apis).
 
 ### Definice
 
@@ -45,7 +45,7 @@ Tyto komponenty potom lze použít v kódu:
 <MyButton label="Ahoj světe" />
 ```
 
-### Properties
+### Argumenty
 
 Všimněme si, že naše komponenta přijímá argumenty (*props*). Ty můžeme rozšířit:
 
@@ -67,7 +67,7 @@ Opět ukázka použití:
 <MyButton label="Jdi na Google" link="https://google.cz" />
 ```
 
-### States
+### Stavy
 
 Komponenty mohou mít stavy (*states*), které slouží jako jejich interní paměť.
 
@@ -89,6 +89,10 @@ const MyButton = ({ label }) => {
     );
 };
 ```
+
+### Efekty
+
+Efekty používáme pro synchronizaci se systémy mimo React.
 
 ## Styly
 
