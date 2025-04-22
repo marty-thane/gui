@@ -8,7 +8,11 @@ Následující dokument slouží jako opora pro výuku v předmětu KI/GUI.
    ```bash
    git clone https://github.com/marty-thane/gui
    ```
-2. Spusťte pomocí Dockeru:
+2. Přesuňte se do nově vzniklého adresáře:
+   ```bash
+   cd gui/
+   ```
+3. Spusťte pomocí Dockeru:
    ```bash
    docker compose up
    ```
