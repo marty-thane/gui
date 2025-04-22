@@ -19,8 +19,6 @@ Následující dokument slouží jako opora pro výuku v předmětu KI/GUI.
 
 ## Komponenty
 
-O komponentách můžeme přemýšlet jako o funkcích.
-
 Přehled komponent naleznete [zde](https://reactnative.dev/docs/components-and-apis).
 
 ### Definice
