@@ -287,5 +287,6 @@ lightContainer: {
     color: 'black',
     borderColor: 'black'
   }
+```
 
 ## Navigace
