@@ -12,7 +12,7 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
-      <Button  title="to login" onPress = {() => router.replace('/login')}></Button>
+      <Button  title="to login" onPress = {() => router.push('/login')}></Button>
     </View>
   );
 }
