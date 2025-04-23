@@ -18,7 +18,7 @@ export default function Login() {
         title="Press to 'Login'" 
         onPress={handleLogin} 
       />
-      <Button title="try" onPress={() => router.push('/profile')}></Button>
+      <Button title="try" onPress={() => router.replace('/profile')}></Button>
     </View>
   );
 }

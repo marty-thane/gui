@@ -8,9 +8,13 @@ export default function FeedLayout() {
     >
       <Stack.Screen
         name='[id]'
-        options={{headerShown: true, headerTitle: '', headerStyle: {
-          backgroundColor: ''
-        }}}
+        options={{
+          headerShown: true, 
+          headerTitle: '', 
+          headerStyle: {
+            backgroundColor: ''
+          }
+        }}
       />
     </Stack>
   );
