@@ -8,13 +8,17 @@ Následující dokument slouží jako opora pro výuku v předmětu KI/GUI.
    ```bash
    git clone https://github.com/marty-thane/gui
    ```
-2. Přesuňte se do nově vzniklého adresáře:
+2. Přejděte do nově vzniklého adresáře:
    ```bash
-   cd gui/
+   cd gui/src/
    ```
-3. Spusťte pomocí Dockeru:
+3. Nainstalujte závislosti:
    ```bash
-   docker compose up
+   npm install
+   ```
+4. Spusťte aplikaci pomocí Expo:
+   ```bash
+   npx expo start
    ```
 
 ## Komponenty
