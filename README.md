@@ -19,53 +19,64 @@ docker compose up --build
 
 Expo Router je knihovna pro navigaci v aplikacích vytvořených s Expo a React Native.
 
-Umožňuje implementovat souborově orientovanou navigaci (file-based routing), což znamená, že struktura složek v projektu odpovídá struktuře navigace v aplikaci.
+- Umožňuje implementovat souborově orientovanou navigaci (file-based routing), což znamená, že struktura složek v projektu odpovídá struktuře navigace v aplikaci.
 
-Je to novější přístup k navigaci v Expo/React Native aplikacích, který usnadňuje organizaci a strukturování aplikace.
+- Je to novější přístup k navigaci v Expo/React Native aplikacích, který usnadňuje organizaci a strukturování aplikace.
 
-Dynamic routing: Expo Router podporuje dynamické routování, což umožňuje například vytváření dynamických URL pro jednotlivé obrazovky.
+- Dynamic routing: Expo Router podporuje dynamické routování, což umožňuje například vytváření dynamických URL pro jednotlivé obrazovky.
 
-Nested layouts: Umožňuje definovat více vrstev rozhraní pro různé sekce aplikace, např. Root Layout, App Layout, Tab Layout, atd.
+- Nested layouts: Umožňuje definovat více vrstev rozhraní pro různé sekce aplikace, např. Root Layout, App Layout, Tab Layout, atd.
 
-Link 
+### Link 
 
-Navigace pomocí odkazu
-Link je komponenta, která umožňuje navigovat mezi stránkami v aplikaci pomocí odkazu, podobně jako v běžném webovém vývoji.
-Funguje stejně jako <a> tag v HTML
+- Navigace pomocí odkazu
 
-useRouter
+- Link je komponenta, která umožňuje navigovat mezi stránkami v aplikaci pomocí odkazu, podobně jako v běžném webovém vývoji. Funguje stejně jako `<a>` tag v HTML
 
-Navigace probíhá na základě nějaké akce v kódu, například při kliknutí na tlačítko, odeslání formuláře nebo jiné interakci uživatele.
+### useRouter
 
-Metody pro navigaci pomocí useRouter
+- Navigace probíhá na základě nějaké akce v kódu, například při kliknutí na tlačítko, odeslání formuláře nebo jiné interakci uživatele.
 
+### Metody pro navigaci pomocí useRouter
+
+``` tsx
 router.push('/profile');
+```
 
 Tato metoda naviguje uživatele na danou cestu a přidává ji do historie, což znamená, že se můžeš vrátit zpět na předchozí stránku (např. kliknutím na tlačítko zpět).
 
+``` tsx
 router.replace('/profile');
+```
 
 Místo toho, aby se stránka přidala do historie, replace nahrazuje aktuální stránku. Tato metoda se hodí, pokud nechceš, aby uživatel mohl zpětně přejít na předchozí stránku (např. po přihlášení, aby se nezobrazovala přihlašovací obrazovka).
 
+``` tsx
 router.back();
+```
 
 Tato metoda přesměruje uživatele zpět na předchozí stránku v historii prohlížeče. 
 
+``` tsx
 router.reload();
+```
 
 Obnoví aktuální stránku (pokud chceš znovu načíst stránku, např. při nějaké změně stavu, která vyžaduje refresh).
 
-<Slot />
+### Navigační komponenty
 
-Komponenta <Slot /> dynamicky vykresluje různé komponenty nebo obrazovky na základě aktuální routy, aniž byste museli ručně specifikovat každou z nich. Ačkoli <Slot /> zjednodušuje routování, postrádá vestavěné navigační prvky jako je tlačítko zpět nebo přechodové animace.
+`<Slot />`
 
-<Stack />
+Komponenta `<Slot />` dynamicky vykresluje různé komponenty nebo obrazovky na základě aktuální routy, aniž byste museli ručně specifikovat každou z nich. Ačkoli `<Slot />` zjednodušuje routování, postrádá vestavěné navigační prvky jako je tlačítko zpět nebo přechodové animace.
 
-Pro aplikace, které vyžadují větší kontrolu nad navigačními přechody, je řešením komponenta <Stack /> z Expo Router. <Stack /> nabízí vestavěné navigační prvky (např. tlačítko zpět), což zlepšuje uživatelský zážitek, a samozřejmě také přechodové animace, které jsme již probírali.“
+`<Stack />`
+
+Pro aplikace, které vyžadují větší kontrolu nad navigačními přechody, je řešením komponenta `<Stack />` z Expo Router. `<Stack />` nabízí vestavěné navigační prvky (např. tlačítko zpět), což zlepšuje uživatelský zážitek, a samozřejmě také přechodové animace, které jsme již probírali.
 
 
-app/_layout.tsx
+### app/_layout.tsx
 
+``` tsx
 import { Slot } from "expo-router";
 import { AuthProvider } from "@/context/auth";
 
@@ -76,8 +87,11 @@ export default function RootLayout() {
     </AuthProvider>
   )
 }
-app/(auth)/_layout.tsx
+```
 
+### app/(auth)/_layout.tsx
+
+``` tsx
 import { Stack } from 'expo-router';
 
 export default function AuthLayout() {
@@ -87,9 +101,11 @@ export default function AuthLayout() {
         />
     )
 }
+```
 
-app/(auth)/index.tsx
+### app/(auth)/index.tsx
 
+``` tsx
 import { Text, View, Button } from "react-native";
 import { useRouter } from 'expo-router';
 
@@ -108,9 +124,11 @@ export default function WelcomeScreen() {
     </View>
   );
 }
+```
 
-app/(auth)/login.tsx
+### app/(auth)/login.tsx
 
+``` tsx
 import { Button, View, Text } from 'react-native';
 import { useAuth } from '@/context/auth'; // Now this exists!
 import { useRouter } from 'expo-router';
@@ -135,9 +153,11 @@ export default function LoginScreen() {
     </View>
   );
 }
+```
 
-context/auth.tsx
+### context/auth.tsx
 
+``` tsx
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface AuthContextType {
@@ -173,9 +193,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
     </AuthContext.Provider>
   );
 }
+```
 
-app/(app)/_layout.tsx
+### app/(app)/_layout.tsx
 
+``` tsx
 import { Redirect } from 'expo-router';
 import { useAuth } from '@/context/auth';
 import { Slot } from 'expo-router';
@@ -189,9 +211,11 @@ export default function AppLayout() {
 
   return <Slot />;
 }
+```
 
-app/(app)/(tabs)/_layout.tsx
+### app/(app)/(tabs)/_layout.tsx
 
+``` tsx
 import { Tabs } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -225,9 +249,11 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+```
 
-app/(app)/(tabs)/profile.tsx
+### app/(app)/(tabs)/profile.tsx
 
+``` tsx
 import { Text, View, Button } from 'react-native';
 import { useAuth } from '@/context/auth';
 import { useRouter } from 'expo-router';
@@ -250,9 +276,11 @@ export default function ProfileScreen() {
         </>
     )
 }
+```
 
-app/(app)/(tabs)/settings.tsx
+### app/(app)/(tabs)/settings.tsx
 
+``` tsx
 import { Text, View } from 'react-native';
 
 export default function SettingsScreen() {
@@ -262,9 +290,11 @@ export default function SettingsScreen() {
         </View>
     )
 }
+```
 
-app/(app)/(tabs)/products/_layout.tsx
+### app/(app)/(tabs)/products/_layout.tsx
 
+``` tsx
 import { Stack } from 'expo-router';
 
 export default function FeedLayout() {
@@ -286,9 +316,11 @@ export default function FeedLayout() {
     </Stack>
   );
 }
+```
 
-app/(app)/(tabs)/products/product.tsx
+### app/(app)/(tabs)/products/product.tsx
 
+``` tsx
 import { Link } from 'expo-router';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
@@ -330,9 +362,11 @@ const styles = StyleSheet.create({
   productName: { fontSize: 18 },
   productPrice: { color: 'green' }
 });
+```
 
-app/(app)/(tabs)/products/[id].tsx
+### app/(app)/(tabs)/products/[id].tsx
 
+``` tsx
 import { useLocalSearchParams } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -370,4 +404,4 @@ const styles = StyleSheet.create({
   price: { fontSize: 20, color: 'green', marginBottom: 20 },
   description: { fontSize: 16, lineHeight: 24 }
 });
-
+```
