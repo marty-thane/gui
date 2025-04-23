@@ -133,4 +133,159 @@ const Greeting = () => {
 
 ## Styly
 
+### Možnosti stylování
+
+#### 1. Inline styly
+
+Přímé stylování aplikované přímo na komponenty
+
+Užitečné pro dynamické nebo podmíněné stylování.
+
+```tsx
+// Úprava tlačítka pomocí inline stylů:
+<TouchableOpacity style={{backgroundColor: 'blue'}} onPress={handlePress}>
+   <Text style={{color: 'white'}}>Potvrdit</Text>
+</TouchableOpacity>
+```
+
+#### 2. StyleSheet.create()
+
+Doporučený přístup pro většinu potřeb stylování
+
+Vytváří optimalizovaný objekt stylu
+
+Poskytuje výkonnostní výhody a kontrolu typu.
+
+
+```tsx
+// import StyleSheet
+import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
+
+// úprava tlačítka pomocí Stylesheet
+<TouchableOpacity style={styles.button} onPress={handlePress}>
+   <Text style={{color: 'white'}}>Potvrdit</Text>
+</TouchableOpacity>
+
+// úprava stylu pozdravu
+<Text style={styles.greeting}>Ahoj, {submittedName}!</Text>
+
+// úprava stylu containeru
+<View style={styles.container}>
+   <Greeting />
+</View>
+
+// vytvoření stylů
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems:'center',
+    padding: 20
+  },
+  button: {
+    backgroundColor: 'blue',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 10
+  },
+  greeting: {
+    margin: 20,
+    fontSize: 24
+  }
+})
+```
+
+#### 3. Externí knihovny
+
+Knihovny třetích stran, jako jsou styled-components a NativeWind
+
+Umožňuje syntaxi podobnou CSS v JavaScriptu
+
+Poskytuje pokročilé možnosti tvorby témat.
+
+
+##### styled-components
+
+Instalace knihovny
+```bash
+npm install styled-components
+```
+
+```tsx
+// import knihovny
+import styled from 'styled-components/native';
+
+// úprava inputu
+<StyledTextInput
+ placeholder="Jak se jmenuješ?"
+ value={name}
+ onChangeText={setName}
+/>
+
+// vytvoření stylů inputu
+const StyledTextInput = styled.TextInput`
+  border-width: 1px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px;
+  padding: 15px
+`;
+```
+
+#### Kombinace stylů
+```tsx
+// úprava stylů tlačítka
+<TouchableOpacity style={[styles.button, {backgroundColor: 'green'}]} onPress={handlePress}>
+ <Text style={{color: 'white'}}>Potvrdit</Text>
+</TouchableOpacity>
+```
+
+#### Dynamické stylování
+
+```tsx
+// import useColorScheme
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, useColorScheme } from 'react-native';
+
+// detekce zda je aktivní darkmode
+const isDarkMode = useColorScheme() === 'dark'
+
+// úprava inputu
+<StyledTextInput
+ placeholder="Jak se jmenuješ?"
+ placeholderTextColor={isDarkMode ? 'white' : 'black'}
+ style={isDarkMode ? styles.darkTextInput : styles.lightTextInput}
+ value={name}
+ onChangeText={setName}
+/>
+
+// úprava pozdravu
+<Text style={[styles.greeting, isDarkMode ? styles.darkGreeting : styles.lightGreeting]}>Ahoj, {submittedName}!</Text>
+
+// úprava containeru
+<View style={[styles.container, isDarkMode ? styles.darkContainer : styles.lightContainer]}>
+   <Greeting />
+</View>
+
+// styly pro dark a light mode
+lightContainer: {
+    backgroundColor: '#f9fafb', // Světlé pozadí
+  },
+  darkContainer: {
+    backgroundColor: '#2d2d2d', // Tmavé pozadí
+  },
+  darkGreeting: {
+    color: 'white'
+  },
+  lightGreeting: {
+    color: 'black'
+  },
+  darkTextInput: {
+    color: 'white',
+    borderColor: 'white'
+  },
+  lightTextInput: {
+    color: 'black',
+    borderColor: 'black'
+  }
+
 ## Navigace
