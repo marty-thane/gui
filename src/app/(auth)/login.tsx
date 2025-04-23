@@ -2,7 +2,7 @@ import { Button, View, Text } from 'react-native';
 import { useAuth } from '@/context/auth'; // Now this exists!
 import { useRouter } from 'expo-router';
 
-export default function Login() {
+export default function LoginScreen() {
   const { login } = useAuth(); // ← Hook is now defined
   const router  = useRouter();
 

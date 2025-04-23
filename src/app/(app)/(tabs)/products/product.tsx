@@ -7,7 +7,7 @@ const mockProducts = [
   { id: '3', name: 'Bluetooth Speaker', price: '$59' },
 ];
 
-export default function Home() {
+export default function ProductScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Our Products</Text>

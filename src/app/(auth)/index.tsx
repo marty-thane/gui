@@ -1,7 +1,7 @@
 import { Text, View, Button } from "react-native";
 import { useRouter } from 'expo-router';
 
-export default function Index() {
+export default function WelcomeScreen() {
   const router = useRouter()
   return (
     <View
@@ -11,7 +11,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>Welcome.</Text>
       <Button  title="to login" onPress = {() => router.push('/login')}></Button>
     </View>
   );

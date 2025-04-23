@@ -1,4 +1,4 @@
-import { Text, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { useAuth } from '@/context/auth';
 import { useRouter } from 'expo-router';
 
@@ -13,8 +13,10 @@ export default function ProfileScreen() {
 
     return(
         <>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>My profile</Text>
         <Button title="logout" onPress={handleLogout}></Button>
+        </View>
         </>
     )
 }

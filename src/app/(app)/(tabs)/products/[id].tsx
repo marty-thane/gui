@@ -7,7 +7,7 @@ const mockProducts = [
   { id: '3', name: 'Bluetooth Speaker', price: '$59', description: 'Portable speaker with 10hr playtime' },
 ];
 
-export default function ProductDetails() {
+export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams();
   const product = mockProducts.find(p => p.id === id);
 
