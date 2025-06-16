@@ -10,15 +10,15 @@ Následující dokument slouží jako opora pro výuku v předmětu KI/GUI.
    ```
 2. Přejděte do nově vzniklého adresáře:
    ```bash
-   cd gui/src/
+   cd gui/
    ```
-3. Nainstalujte závislosti:
+3. Vygenerujte prostředí pomocí Python skriptu:
    ```bash
-   npm install
+   python genenv.py
    ```
-4. Spusťte aplikaci pomocí Expo:
+4. Spusťte aplikaci pomocí Docker:
    ```bash
-   npx expo start
+   docker compose up
    ```
 
 ## Komponenty
