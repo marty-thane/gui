@@ -3,11 +3,10 @@ import { Stack } from 'expo-router';
 export default function FeedLayout() {
   return (
     <Stack
-      initialRouteName="product"
       screenOptions={{headerShown: false}}
     >
       <Stack.Screen
-        name='[id]'
+        name='[productId]'
         options={{
           headerShown: true, 
           headerTitle: '', 
