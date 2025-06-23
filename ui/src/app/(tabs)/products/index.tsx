@@ -12,12 +12,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useProducts } from '@/hooks/useProduct';
+import { useTheme } from '../../ThemeContext';
 
 export default function ProductScreen() {
   const { products, fetchProducts, loading, error, deleteProduct} = useProducts();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [deletingLoading, setDeletingLoading] = useState(false);
+
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  
+  const backgroundColor = resolvedTheme === 'dark' ? '#000' : '#fff';
+  const productBackgroundColor = resolvedTheme === 'dark' ? '#0f0f0f' : '#f0f0f0';
+  const textColor = resolvedTheme === 'dark' ? '#fff' : '#000';
 
 
   useFocusEffect(
@@ -62,13 +69,13 @@ export default function ProductScreen() {
 
   return (
     <>
-      <ScrollView style={styles.container}>
-        <Text style={styles.title}>Our Products</Text>
+      <ScrollView style={[styles.container, {backgroundColor}]}>
+        <Text style={[styles.title, {color: textColor}]}>Our Products</Text>
         {products.map((product) => (
-          <View key={product.id} style={styles.productCard}>
+          <View key={product.id} style={[styles.productCard, {backgroundColor: productBackgroundColor}]}>
             <Link href={`/products/${product.id}`} asChild>
               <Pressable style={styles.productInfo}>
-                <Text style={styles.productName}>{product.name}</Text>
+                <Text style={[styles.productName, {color: textColor}]}>{product.name}</Text>
                 <Text style={styles.productPrice}>
                   {product.price} {product.currency}
                 </Text>
@@ -96,9 +103,9 @@ export default function ProductScreen() {
         onRequestClose={closeModal}
       >
         <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Confirm Delete</Text>
-            <Text style={styles.modalMessage}>
+          <View style={[styles.modalContent, {backgroundColor}]}>
+            <Text style={[styles.modalTitle, {color: textColor}]}>Confirm Delete</Text>
+            <Text style={[styles.modalMessage, {color: textColor}]}>
               Are you sure you want to delete this product?
             </Text>
             <View style={styles.modalButtons}>

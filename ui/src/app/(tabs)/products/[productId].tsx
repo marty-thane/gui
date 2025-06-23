@@ -3,11 +3,17 @@ import { View, Text, StyleSheet} from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useProducts } from '@/hooks/useProduct';
 import { Product } from '@/api/models';
+import { useTheme } from '../../ThemeContext';
 
 export default function ProductDetailScreen() {
   const { productId } = useLocalSearchParams();
   const { fetchProductById } = useProducts(); 
   const [product, setProduct] = useState<Product | null>(null);
+
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  
+  const backgroundColor = resolvedTheme === 'dark' ? '#000' : '#fff';
+  const textColor = resolvedTheme === 'dark' ? '#fff' : '#000';
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -28,19 +34,19 @@ export default function ProductDetailScreen() {
 
   if (!product) {
     return (
-      <View style={styles.centered}>
+      <View style={[styles.centered, {backgroundColor}]}>
         <Text style={styles.error}>No product to display</Text>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{product.name}</Text>
+    <View style={[styles.container, {backgroundColor}]}>
+      <Text style={[styles.title, {color: textColor}]}>{product.name}</Text>
       <Text style={styles.price}>
         {product.price} {product.currency}
       </Text>
-      <Text style={styles.description}>{product.description}</Text>
+      <Text style={[styles.description, {color: textColor}]}>{product.description}</Text>
     </View>
   );
 }

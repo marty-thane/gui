@@ -1,7 +1,11 @@
-import { Slot } from "expo-router";
+import { Slot } from 'expo-router';
+import { ThemeProvider } from './ThemeContext';
 
 export default function RootLayout() {
-  return(
+  return (
+    <ThemeProvider>
       <Slot />
-  )
+    </ThemeProvider>
+  );
 }
+

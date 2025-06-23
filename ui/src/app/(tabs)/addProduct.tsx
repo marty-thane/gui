@@ -3,6 +3,7 @@ import { View, TextInput, Text, StyleSheet, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useProducts } from '@/hooks/useProduct';
 import { Product } from '@/api/models'; 
+import { useTheme } from '../ThemeContext';
 
 export default function AddProductScreen() {
   const { createProduct } = useProducts();
@@ -17,6 +18,11 @@ export default function AddProductScreen() {
   const [priceError, setPriceError] = useState('');
   const [currencyError, setCurrencyError] = useState('');
   const [submitError, setSubmitError] = useState('');
+
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  
+  const backgroundColor = resolvedTheme === 'dark' ? '#000' : '#fff';
+  const textColor = resolvedTheme === 'dark' ? '#fff' : '#000';
 
   const validate = () => {
     let valid = true;
@@ -88,14 +94,14 @@ export default function AddProductScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Add New Product</Text>
+    <View style={[styles.container, {backgroundColor}]}>
+      <Text style={[styles.title, { color: textColor}]}>Add New Product</Text>
 
       <TextInput
         placeholder="Name"
         value={name}
         onChangeText={setName}
-        style={styles.input}
+        style={[styles.input, { color: textColor}]}
       />
       {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
 
@@ -104,7 +110,7 @@ export default function AddProductScreen() {
         value={price}
         onChangeText={setPrice}
         keyboardType="numeric"
-        style={styles.input}
+        style={[styles.input, { color: textColor}]}
       />
       {priceError ? <Text style={styles.errorText}>{priceError}</Text> : null}
 
@@ -112,7 +118,7 @@ export default function AddProductScreen() {
         placeholder="Currency (e.g. USD)"
         value={currency}
         onChangeText={setCurrency}
-        style={styles.input}
+        style={[styles.input, { color: textColor}]}
       />
       {currencyError ? <Text style={styles.errorText}>{currencyError}</Text> : null}
 
@@ -121,7 +127,7 @@ export default function AddProductScreen() {
         value={description}
         onChangeText={setDescription}
         multiline
-        style={[styles.input, styles.textArea]}
+        style={[styles.input, styles.textArea, { color: textColor}]}
       />
 
       <Button title="Add Product" onPress={handleAddProduct} />
