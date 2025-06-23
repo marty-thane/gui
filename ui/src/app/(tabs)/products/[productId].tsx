@@ -18,8 +18,7 @@ export default function ProductDetailScreen() {
         if (!res) throw new Error('Product not found');
         setProduct(res);
       } catch (e: any) {
-        const message = e?.message || 'Unable to load the product details. Please try again later.';
-        alert(message);
+        console.error(e);
       }
     };
 

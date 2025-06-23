@@ -14,7 +14,7 @@ import {
 import { useProducts } from '@/hooks/useProduct';
 
 export default function ProductScreen() {
-  const { products, fetchProducts, loading, error, deleteProduct} = useProducts();
+  const { products, fetchProducts, error, deleteProduct} = useProducts();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [deletingLoading, setDeletingLoading] = useState(false);
@@ -53,8 +53,7 @@ export default function ProductScreen() {
       setModalVisible(false);
       setSelectedId(null);
     } catch (e: any) {
-      const message = e?.message || 'Something went wrong while deleting the product. Please try again.';
-      alert(message);
+      console.error(e);
     } finally {
       setDeletingLoading(false);
     }
