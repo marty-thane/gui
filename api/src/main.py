@@ -4,8 +4,19 @@ from typing import List
 from models import Product
 from bson import ObjectId
 from bson.errors import InvalidId
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["http://localhost:8081"]  
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/", response_model=List[Product])
 async def read_products(db=Depends(get_db)):
